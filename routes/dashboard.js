@@ -8,7 +8,7 @@ const { ensureAuth } = require("../middleware/auth")
 
 //add specific routes for specific tasks
 router.get("/", ensureAuth, dashboardController.getDashboard)
+router.get("/newLesson", dashboardController.newLesson)
 router.post("/", dashboardController.addLesson)
-
 
 module.exports = router

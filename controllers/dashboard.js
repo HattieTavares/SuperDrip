@@ -19,6 +19,11 @@ module.exports = {
             if (err) return res.status(500).send(err.toString())
         }
     },
+    newLesson: (req,res)=>{
+        res.render('newLesson.ejs', {
+            user: req.user
+        })
+    },
     addLesson: async (req, res) => {
         const addHours = new DrivingHours(
             {

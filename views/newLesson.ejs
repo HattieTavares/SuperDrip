@@ -1,0 +1,30 @@
+<%- include('partials/head.ejs') %>
+
+<body class="basics items-center">
+
+    <a href="/dashboard" class="redBtn self-start ml-5"><i class="fa-solid fa-arrow-left"></i>&nbsp;&nbsp;Back</a>
+
+    <section class="flex flex-col w-full md:w-2/3 lg:w-1/2 p-5">
+        <h3 class="titleSmall bg-accent rounded-md spacing">Add new lesson:</h3>
+
+        <form action="/dashboard" method="POST" class="hours-header flex flex-col flex-nowrap space-y-1">
+            <label for="sessionDate">Date of session:</label>
+            <input type="date" class="showText" name="sessionDate" id="sessionDate">
+            <label for="totalHours">Total hours driven this session:</label>
+            <input type="number" class="showText" min= "0" step= ".25" max="24" name="totalHours" id="total">
+            <label for="nightHours">Total hours driven at night:</label>
+            <input type="number" class="showText" min= "0" step= ".25" max="24" name="nightHours" id="night">
+            <label for="hwyHours">Total hours driven on the highway:</label>
+            <input type="number" class="showText" min= "0" step= ".25" max="24" name="hwyHours" id="hwy">
+            <label for="instructor">Instructor:</label>
+            <input type="text" class="showText" name="instructor" id="instructor">
+            <label for="note">Session Note:</label>
+            <textarea class="showText resize-none placeholder-mid" rows= "8" columns="60" name="note" id="note" placeholder="Notes about maneuvers practiced, which need more practice, etc:"></textarea>
+            <button type="submit" class="greenBtn">Submit</button>
+        </form>
+
+    </section>
+
+</body>
+
+<%- include('partials/footer.ejs') %>
