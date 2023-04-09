@@ -21,7 +21,7 @@
 }
 
 .welcome {
-    @apply flex flex-row justify-center items-center p-2 bg-mid h-10 rounded-md;
+    @apply flex flex-row justify-center items-center w-2/3 p-2 bg-mid h-10 rounded-md;
 }
 
 .title {
@@ -58,6 +58,10 @@
 
 .blueBtn {
     @apply inline-flex items-center justify-center rounded-lg bg-mid hover:bg-neutral hover:text-dark w-24 h-8 cursor-pointer font-bold tracking-wider text-center align-middle;
+}
+
+.greenBtn {
+    @apply inline-flex items-center justify-center rounded-lg bg-green-500 text-dark hover:bg-mid hover:text-neutral w-24 h-8 cursor-pointer font-bold tracking-wider text-center align-middle;
 }
 
 .tdFormat1 {
