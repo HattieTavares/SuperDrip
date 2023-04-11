@@ -1,0 +1,41 @@
+<%- include('partials/head.ejs') %>
+
+<body class="basics items-center">
+
+    <section class="w-2/3">
+
+        <h2 class="titleSmall mt-5 mb-3">Past Lessons:</h2>
+        
+        <table>
+            <thead>
+                <tr class="bg-mid text-left">
+                    <td class="tdFormat1" class="tdFormat">Lesson date:</td>
+                    <td class="spacing">Instructor:</td>
+                    <td class="spacing">Total Driving Time:</td>
+                    <td class="spacing">After Sunset:</td>
+                    <td class="spacing">On the Highway:</td>
+                    <td class="spacing">Note:</td>
+                    <td class="spacing">Edit Lesson:</td>
+                    <td class="tdFormat2">Delete Lesson:</td>
+                </tr>
+            </thead>
+            <tbody>
+                <% DrivingHours.forEach(item => {%>
+                    <tr>
+                        <td class="spacing whitespace-nowrap"><%= moment.utc(item.sessionDate).format( 'MMM DD, YYYY') %></td>
+                        <td class="spacing"><%= item.instructor %></td>
+                        <td class="spacing"><%= item.totalHours %></td>
+                        <td class="spacing"><%= item.nightHours %></td>
+                        <td class="spacing"><%= item.hwyHours %></td>
+                        <td class="spacing"><%= item.note %></td>
+                        <td class="spacing"><a href="/edit/<%=item._id %>" class="edit"><span class="fas fa-edit hover:text-neutral text-green-500"></span></a></td>
+                        <td class="spacing"><a href="/edit/remove/<%=item._id %>" class="remove"><span class="fas fa-trash hover:text-neutral text-accent"></span></a></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </section>
+
+</body>
+
+<%- include('partials/footer.ejs') %>
