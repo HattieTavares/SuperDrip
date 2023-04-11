@@ -2,14 +2,14 @@ const DrivingHours = require("../models/hours")
 const moment = require('moment')
 
 module.exports = {
-    getIndex: (req,res)=>{
+    getIndex: (req,res) => {
         res.render('index.ejs', {
             user: req.user
         })
     },
     getDashboard : async (req, res) => {
         try {
-            const hours = await DrivingHours.find({userId:req.user.id})
+            const hours = await DrivingHours.find({userId:req.user.id}).sort({sessionDate: "desc"}).lean()
             res.render("dashboard.ejs", {
                 DrivingHours: hours,
                 moment: moment,
@@ -19,10 +19,22 @@ module.exports = {
             if (err) return res.status(500).send(err.toString())
         }
     },
-    newLesson: (req,res)=>{
+    newLesson: (req,res) => {
         res.render('newLesson.ejs', {
             user: req.user
         })
+    },
+    viewAll: async (req,res) => {
+        try {
+            const hours = await DrivingHours.find({userId:req.user.id}).sort({sessionDate: "desc"}).lean()
+            res.render("allLessons.ejs", {
+                DrivingHours: hours,
+                moment: moment,
+                user: req.user
+            })
+        } catch (err) {
+            if (err) return res.status(500).send(err.toString())
+        }
     },
     addLesson: async (req, res) => {
         const addHours = new DrivingHours(

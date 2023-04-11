@@ -47,14 +47,14 @@
             </table>
         </section>
 
-        <section class="w-full">
+        <section class="w-full flex flex-col">
 
-            <h2 class="titleSmall mt-5 mb-3">Past Lessons:</h2>
+            <h2 class="titleSmall mt-5 mb-3">Most Recent Lessons:</h2>
             
             <table>
                 <thead>
                     <tr class="bg-mid text-left">
-                        <td class="tdFormat1" class="tdFormat">Lesson date:</td>
+                        <td class="tdFormat1">Lesson date:</td>
                         <td class="spacing">Instructor:</td>
                         <td class="spacing">Total Driving Time:</td>
                         <td class="spacing">After Sunset:</td>
@@ -65,20 +65,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% DrivingHours.forEach(item => {%>
+                    <% for(let i = 0; i < 10; i++) {%>
                         <tr>
-                            <td class="spacing"><%= moment.utc(item.sessionDate).format( 'MMMM DD, YYYY') %></td>
-                            <td class="spacing"><%= item.instructor %></td>
-                            <td class="spacing"><%= item.totalHours %></td>
-                            <td class="spacing"><%= item.nightHours %></td>
-                            <td class="spacing"><%= item.hwyHours %></td>
-                            <td class="spacing"><%= item.note %></td>
-                            <td class="spacing"><a href="/edit/<%=item._id %>" class="edit"><span class="fas fa-edit hover:text-neutral text-green-500"></span></a></td>
-                            <td class="spacing"><a href="/edit/remove/<%=item._id %>" class="remove"><span class="fas fa-trash hover:text-neutral text-accent"></span></a></td>
+                            <td class="spacing whitespace-nowrap"><%= moment.utc(DrivingHours[i].sessionDate).format( 'MMM DD, YYYY') %></td>
+                            <td class="spacing"><%= DrivingHours[i].instructor %></td>
+                            <td class="spacing"><%= DrivingHours[i].totalHours %></td>
+                            <td class="spacing"><%= DrivingHours[i].nightHours %></td>
+                            <td class="spacing"><%= DrivingHours[i].hwyHours %></td>
+                            <td class="spacing"><%= DrivingHours[i].note %></td>
+                            <td class="spacing"><a href="/edit/<%=DrivingHours[i]._id %>" class="edit"><span class="fas fa-edit hover:text-neutral text-green-500"></span></a></td>
+                            <td class="spacing"><a href="/edit/remove/<%=DrivingHours[i]._id %>" class="remove"><span class="fas fa-trash hover:text-neutral text-accent"></span></a></td>
                         </tr>
-                    <% }) %>
+                    <% } %>
                 </tbody>
             </table>
+            <a href="/dashboard/viewAll" class="blueBtn">View All</a>
         </section>
     </section>
     
